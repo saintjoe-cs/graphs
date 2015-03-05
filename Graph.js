@@ -5,8 +5,13 @@ function Graph(v) {
   for (var i = 0; i < this.vertices; ++i) {
     this.adj[i] = [];
     }
+  this.marked = [];
+  for (var i = 0; i < this.vertices; ++i) {
+    this.marked[i] = false;
+    }
   this.addEdge = addEdge;
   this.showGraph = showGraph;
+  this.dfs = dfs;
 }
 
 function addEdge(v,w) {
@@ -26,3 +31,15 @@ function showGraph() {
   }
 }
 
+function dfs(v) {
+  this.marked[v] = true;
+  if (this.adj[v] !== undefined) {
+    print("Visited vertex: " + v);
+    }
+  for (var i = 0; i < this.adj[v].length; i++) {
+    var w = this.adj[v][i];
+    if (!this.marked[w]) {
+      this.dfs(w);
+      }
+    }
+}
