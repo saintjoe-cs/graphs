@@ -18,8 +18,8 @@ function Graph(v) {
   this.pathTo = pathTo;
   this.hasPathTo = hasPathTo;
   this.showPath = showPath;
-  this.topSortHelper = topSortHelper;
-  this.topSort = topSort;
+//  this.topSortHelper = topSortHelper;
+//  this.topSort = topSort;
 }
 
 function addEdge(v,w) {
@@ -28,29 +28,30 @@ function addEdge(v,w) {
   this.edges++;
 }
 
-//function showGraph() {
-//  for (var i = 0; i < this.vertices; ++i) {
-//    write(i + " -> ");
-//    for (var j = 0; j < this.vertices; ++j) {
-//      if (this.adj[i][j] != undefined)
-//        write(this.adj[i][j] + ' ');
-//    }
-//    print();
-//  }
-// }
-
 function showGraph() {
   for (var i = 0; i < this.vertices; ++i) {
-    write(this.vertexList[i] + " -> ");
+    putstr(i + " -> ");
     for (var j = 0; j < this.vertices; ++j) {
-      if (this.adj[i][j] !== undefined) {
-        var w = this.adj[i][j];
-        write(this.vertexList[w] + ' | ');
-      }
+      if (this.adj[i][j] != undefined)
+        putstr(this.adj[i][j] + ' ');
     }
-  print();
+    print();
   }
-}
+ }
+
+//function showGraph() {
+//  for (var i = 0; i < this.vertices; ++i) {
+//    putstr(this.vertexList[i] + " -> ");
+//    for (var j = 0; j < this.vertices; ++j) {
+//      if (this.adj[i][j] !== undefined) {
+//        var w = this.adj[i][j];
+//        putstr(this.vertexList[w] + ' | ');
+//      }
+//    }
+//  print();
+//  }
+//}
+
 function dfs(v) {
   this.marked[v] = true;
   if (this.adj[v] !== undefined) {
@@ -104,10 +105,10 @@ function hasPathTo(v) {
 function showPath(paths) {
   while (paths.length > 0) {
     if (paths.length > 1) {
-      write(paths.pop() + '-');
+      putstr(paths.pop() + '-');
       }
     else {
-      write(paths.pop());
+      putstr(paths.pop());
       }
     }
   print();
